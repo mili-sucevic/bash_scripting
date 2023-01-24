@@ -1,68 +1,84 @@
 #!/bin/bash
 
 # Update package index
+echo -e -e "\e[93mUpdate package index...\e[0m"
 sudo apt-get update
 sudo apt-get install -y zsh
+echo
 
 # Install Terraform
-sudo apt-get install -y terraform
+echo -e -e "\e[93mInstall Terraform and add to PATH...\e[0m"
+sudo snap install terraform --classic
 
 # Add Terraform to PATH
-echo 'export PATH="$PATH:/usr/local/bin/terraform"' >> ~/.zshrc
+echo'export PATH="$PATH:/usr/local/bin/terraform"' >> ~/.zshrc
 source ~/.zshrc
+echo
 
 # Install Ansible
+echo -e "\e[93mInstall Ansible and add to PATH...\e[0m"
 sudo apt-get install -y ansible
 
 # Add Ansible to PATH
 echo 'export PATH="$PATH:/usr/bin/ansible"' >> ~/.zshrc
 source ~/.zshrc
+echo
+
+# Install Git
+sudo apt-get install -y git
+
+# Add Git to Path
+echo 'export PATH="$PATH:/usr/bin/git"' >> ~/.zshrc
+source ~/.zshrc
+echo
+
+# Install Docker
+sudo snap install docker
+
+# Add Docker to PATH
+echo 'export PATH="$PATH:/usr/bin/docker"' >> ~/.zshrc
+source ~/.zshrc
+echo
 
 # Install Kubernetes
-sudo apt-get install -y kubectl
+echo -e "\e[93mInstall Kubernetes and add to PATH...\e[0m"
+snap install kubectl
+
 
 # Add Kubernetes to PATH
 echo 'export PATH="$PATH:/usr/local/bin/kubectl"' >> ~/.zshrc
 source ~/.zshrc
+echo
 
 # Install Helm
+echo -e "\e[93mInstall Helm and add to PATH...\e[0m"
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
 # Add Helm to PATH
 echo 'export PATH="$PATH:/usr/local/bin/helm"' >> ~/.zshrc
 source ~/.zshrc
+echo
 
 # Install AWS CLI
+echo -e "\e[93mInstall AWS CLI and add to PATH...\e[0m"
 sudo apt-get install -y awscli
 
 # Add AWS CLI to PATH
 echo 'export PATH="$PATH:/usr/local/bin/aws"' >> ~/.zshrc
 source ~/.zshrc
-
-# Install Python 3
-sudo apt-get install -y python3
-
-# Install kubie
-curl https://get.kubie.sh | bash
+echo
 
 # Add kubie to PATH
 echo 'export PATH="$PATH:~/.kubie"' >> ~/.zshrc
 source ~/.zshrc
+echo
 
 # Add kubectl aliases to zshrc file
 ## Generate a secure password and copy it to clipboard
-alias genpw='LC_ALL=C tr -dc "[:alnum:]" < /dev/urandom | head -c 20 | pbcopy'
-
-## generic
-alias reload!=". ~/.zshrc"
+echo -e "\e[93mAdd kubectl aliases to zshrc file...\e[0m"
+cat > ~/.zshrc <<- EOS
 alias ll="ls -lah"
 alias vissh="vi ~/.ssh/config"
-alias vihost="sudo vi /etc/hosts"
-alias vizsh="vi ~/.zshrc"
-
-## Kubernetes
-alias k="kubectl"
-alias kg="k get"
 alias kgp="k get pods -o wide"
 alias kgn="k get nodes -o wide"
 alias kgs="k get service"
@@ -107,5 +123,3 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
-
-source ~/.zshrc
