@@ -88,6 +88,7 @@ alias kns="kubie ns"
 alias kcx="kubie ctx"
 alias pod-check="kgp -A -o wide | grep -v Running | grep -v Comp"
 alias pod-count="kgp -A | wc -l"
+
 ## SSL
 alias certexp="openssl x509 -enddate -noout -in"
 alias certcheck="openssl x509 -noout -text -in"
@@ -99,6 +100,7 @@ alias nlp="nslookup"
 alias gcm="git commit -m"
 alias gp="git push"
 alias gpt="git push --tags"
+
 ## Ansible
 alias ansible="/usr/local/opt/ansible@2.8/bin/ansible"
 alias ansible-playbook="/usr/local/opt/ansible@2.8/bin/ansible-playbook"
@@ -107,8 +109,10 @@ alias ansible2-playbook="/usr/local/opt/ansible@2.9/bin/ansible-playbook"
 alias ansible4="/usr/local/opt/ansible/bin/ansible"
 alias ansible4-galaxy="/usr/local/opt/ansible/bin/ansible-galaxy"
 alias ansible4-playbook="/usr/local/opt/ansible/bin/ansible-playbook"
+
 ## Helm
 alias helm="/usr/local/opt/helm/bin/helm"
+
 ## Zsh Auto Complete
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
