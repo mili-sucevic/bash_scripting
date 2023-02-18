@@ -9,8 +9,14 @@ key_pair_name="eks-tf-keypair"
 # Define the key pair file path
 file_path="[FILE_PATH_TO_SUBFOLDER_1]/$key_pair_name.pem"
 
+# Remove the existing key, if there isn't one create new
+if [ -f "$file_path" ]; then
+  rm "$file_path"
+fi
+
 # Create the key pair
-aws ec2 create-key-pair --region $region --key-name $key_pair_name --query 'KeyMaterial' --output text > $file_path
+aws ec2 create-key-pair --region $region --key-name $key_pair_name --query 'KeyMaterial' --output text >> $file_path
+
 
 # Change the permissions of the key file to secure it
 chmod 400 $file_path
