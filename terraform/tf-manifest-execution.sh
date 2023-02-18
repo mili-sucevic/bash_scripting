@@ -17,7 +17,6 @@ fi
 # Create the key pair
 aws ec2 create-key-pair --region $region --key-name $key_pair_name --query 'KeyMaterial' --output text >> $file_path
 
-
 # Change the permissions of the key file to secure it
 chmod 400 $file_path
 
