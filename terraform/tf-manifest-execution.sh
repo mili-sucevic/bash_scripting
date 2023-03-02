@@ -25,8 +25,8 @@ main_folder="[FILE_PATH_TO_MAIN_FOLDER]" # Can be used for creating S3 bucket an
 
 # Define the subfolders containing Terraform manifests
 subfolder_1="[FILE_PATH_TO_SUBFOLDER_1]" # Can be used for creating EKS Cluster
-# subfolder_2="[FILE_PATH_TO_SUBFOLDER_2]" # Can be used for creating EBS
-# subfolder_3="[FILE_PATH_TO_SUBFOLDER_3]" # Can be used for Deploying K8s Manifests
+subfolder_2="[FILE_PATH_TO_SUBFOLDER_2]" # Can be used for creating EBS
+subfolder_3="[FILE_PATH_TO_SUBFOLDER_3]" # Can be used for Deploying K8s Manifests
 
 # Go to main folder
 cd $main_folder
@@ -54,7 +54,7 @@ terraform fmt -recursive
 terraform validate 
 terraform init
 terraform apply -auto-approve
-terraform apply --wait=900s
+terraform apply --wait=900s # roughly how long it takes to build EKS cluster ~15 mins
 
 # Go to main folder
 cd $subfolder_2
