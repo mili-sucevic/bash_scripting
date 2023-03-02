@@ -21,12 +21,12 @@ aws ec2 create-key-pair --region $region --key-name $key_pair_name --query 'KeyM
 chmod 400 $file_path
 
 # Define the main folder that contains the top-level Terraform manifest
-main_folder="[FILE_PATH_TO_MAIN_FOLDER]"
+main_folder="[FILE_PATH_TO_MAIN_FOLDER]" # Can be used for creating S3 bucket and DynamoDB Tables
 
 # Define the subfolders containing Terraform manifests
-subfolder_1="[FILE_PATH_TO_SUBFOLDER_1]"
-subfolder_2="[FILE_PATH_TO_SUBFOLDER_2]"
-# subfolder_3=$4
+subfolder_1="[FILE_PATH_TO_SUBFOLDER_1]" # Can be used for creating EKS Cluster
+# subfolder_2="[FILE_PATH_TO_SUBFOLDER_2]" # Can be used for creating EBS
+# subfolder_3="[FILE_PATH_TO_SUBFOLDER_3]" # Can be used for Deploying K8s Manifests
 
 # Go to main folder
 cd $main_folder
@@ -67,8 +67,8 @@ terraform apply -auto-approve
 terraform apply --wait=60s
 
 # # Repeat the process for subfolder 3
-# terraform fmt -recursive $subfolder_3
-# terraform validate $subfolder_3
-# terraform init $subfolder_3
-# terraform apply -auto-approve $subfolder_3
-# terraform apply --wait=60s $subfolder_3
+terraform fmt -recursive $subfolder_3
+terraform validate $subfolder_3
+terraform init $subfolder_3
+terraform apply -auto-approve $subfolder_3
+terraform apply --wait=60s $subfolder_3
