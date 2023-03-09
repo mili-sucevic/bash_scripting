@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Set AWS access key ID and secret access key as environment variables
-export AWS_ACCESS_KEY_ID=<your_access_key_id>
-export AWS_SECRET_ACCESS_KEY=<your_secret_access_key>
+export AWS_ACCESS_KEY_ID=AKIA2OB4ZYCL2R6CX3UW
+export AWS_SECRET_ACCESS_KEY=fiWykBA4hHzE8TM/NvFDR3mrbsfLlIomfuXu/L9O
 
 # List all configuration data
 aws configure list
